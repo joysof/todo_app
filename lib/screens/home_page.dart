@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:todo_app/utils/todo_list.dart';
 class HomePage extends StatelessWidget {
-  List toDoList =[
-    ['learn flutter ', false],
-    ['hard work with  flutter ', false]
-  ];
+   HomePage({super.key});
+
+ List toDoList =[
+  ['learn flutter' , false],
+  ['Drink coffee' , false],
+  ['learn new' , false],
+  ['learn flutter' , false]
+ ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,29 +22,9 @@ class HomePage extends StatelessWidget {
       body: ListView.builder(
         itemCount: toDoList.length,
         itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding : const EdgeInsets.only(
-              top: 20,
-              left: 20,
-              right: 20,
-              bottom: 0
-            ),
-            child : Container(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color:Colors.deepPurple,
-                borderRadius: BorderRadius.circular(15)
-              ),
-              
-              child: Text(
-                toDoList[index][0],
-                style:TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-            )
-          );
+          return TodoList(
+            taskName: toDoList[index][0]
+            );
         },
       ),
     );
